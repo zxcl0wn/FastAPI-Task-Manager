@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from ..database import fake_db, id
 from ..models import UserCreate, UserUpdate, UserResponse
 from typing import List
@@ -18,13 +18,12 @@ async def get_users():
 async def get_user(user_id: int):
     try:
         return fake_db["users"][user_id]
-    except KeyError:
-        return {"error": f"User {user_id} not found"}
+    except:
+        raise HTTPException(status_code=404, detail=f"User {user_id} not found")
 
 @router.post("/", response_model=UserResponse)
 async def create_user(user: UserCreate):
-    global id
-    id += 1
+    id = len(fake_db["users"])+1
     fake_db["users"][id] = user
     return user
 
@@ -32,8 +31,8 @@ async def create_user(user: UserCreate):
 async def put_user(user_id: int, new_user_data:UserUpdate):
     try:
         new_user = fake_db["users"][user_id]
-    except KeyError:
-        return {"error": f"User {user_id} not found"}
+    except:
+        raise HTTPException(status_code=404, detail=f"User {user_id} not found")
     new_user.update(new_user_data.model_dump())
     return new_user
 
@@ -43,5 +42,5 @@ async def delete_user(user_id: int):
         user = fake_db["users"][user_id]
         del fake_db["users"][user_id]
         return user
-    except KeyError:
-        return {"error": f"User {user_id} not found"}
+    except:
+        raise HTTPException(status_code=404, detail=f"User {user_id} not found")

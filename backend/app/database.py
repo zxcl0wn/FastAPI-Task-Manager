@@ -1,8 +1,7 @@
-fake_db = {}
-id = len(fake_db)
+fake_db = {
+    "users": {},
+    "tasks": {},
+    "categories": {},
+}
 
-# fake_db = {
-#     "users": {},
-#     "tasks": {},
-#     "categories": {},
-# }
+id = len(fake_db)

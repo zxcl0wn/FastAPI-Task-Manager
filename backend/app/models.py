@@ -22,19 +22,19 @@ class BaseTask(BaseModel):
     description: str|None = None
 
 class TaskCreate(BaseTask):
-    category_id: str
-    user_id: str
+    category_id: int
+    user_id: int
 
 class TaskResponse(BaseTask):
     id: int
-    category_id: str
-    user_id: str
+    category_id: int
+    user_id: int
 
 class TaskUpdate(BaseTask):
     title: str|None = None
     description: str|None = None
-    category_id: str|None = None
-    user_id: str|None = None
+    category_id: int|None = None
+    user_id: int|None = None
 
 
 # Categories
