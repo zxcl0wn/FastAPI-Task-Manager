@@ -3,5 +3,3 @@ fake_db = {
     "tasks": {},
     "categories": {},
 }
-
-id = len(fake_db)
