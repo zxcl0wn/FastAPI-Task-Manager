@@ -34,7 +34,6 @@ class TaskUpdate(BaseTask):
     title: str|None = None
     description: str|None = None
     category_id: int|None = None
-    user_id: int|None = None
 
 
 # Categories
@@ -42,12 +41,10 @@ class BaseCategory(BaseModel):
     title: str
 
 class CategoryCreate(BaseCategory):
-    password: str
+    ...
 
 class CategoryResponse(BaseCategory):
     id: int
-    password: str
 
 class CategoryUpdate(BaseCategory):
     title: str|None = None
-    password: str|None = None

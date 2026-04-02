@@ -1,6 +1,5 @@
 from fastapi import HTTPException, status
-from pydantic.v1.schema import default_ref_template
-
+from ..models import TaskResponse
 from ..repositories import TaskRepository, UserRepository, CategoryRepository
 
 
