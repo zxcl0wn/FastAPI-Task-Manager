@@ -1,5 +1,4 @@
 from fastapi import HTTPException, status
-from ..models import TaskResponse
 from ..repositories import TaskRepository, UserRepository, CategoryRepository
 
 
@@ -27,7 +26,7 @@ class TaskService:
         existing_tasks = self.task_repository.get_all()
         for existing_task in existing_tasks:
             if existing_task["title"] == task["title"]:
-                raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Task already exists")
+                raise HTTPException(status_code=status.HTTP_400_NOT_FOUND, detail="Task already exists")
         return self.task_repository.create(task)
 
     def update(self, task_id: int, new_task_data: dict) -> dict|None:

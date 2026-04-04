@@ -1,6 +1,5 @@
-from fastapi import APIRouter, HTTPException
-from ..database import fake_db
-from ..models import UserCreate, UserUpdate, UserResponse
+from fastapi import APIRouter
+from ..schemas import UserCreate, UserUpdate, UserResponse
 from typing import List
 from ..services import UserService
 

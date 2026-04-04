@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from ..database import fake_db
 from ..models import TaskCreate, TaskUpdate, TaskResponse
 from typing import List
