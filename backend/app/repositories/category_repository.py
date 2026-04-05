@@ -38,4 +38,5 @@ class CategoryRepository:
         if category:
             self.db.delete(category)
             self.db.commit()
+            return category
         return None

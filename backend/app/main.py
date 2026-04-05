@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from .routes.users import router as user_router
-from .routes.tasks import router as task_router
-from .routes.categories import router as category_router
+from .routes.user_route import router as user_router
+from .routes.task_route import router as task_router
+from .routes.category_route import router as category_router
 from .database import init_db
 
 
