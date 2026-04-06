@@ -24,12 +24,12 @@ async def get_user(user_id: int, db: Session=Depends(get_db)):
 @router.post("/", response_model=UserResponse)
 async def create_user(user: UserCreate, db: Session=Depends(get_db)):
     service = UserService(db)
-    return service.create(user.model_dump())
+    return service.create(user)
 
 @router.put("/{user_id}", response_model=UserResponse)
 async def put_user(user_id: int, new_user_data: UserUpdate, db: Session=Depends(get_db)):
     service = UserService(db)
-    return service.update(user_id, new_user_data.model_dump())
+    return service.update(user_id, new_user_data)
 
 @router.delete("/{user_id}", response_model=UserResponse)
 async def delete_user(user_id: int, db: Session=Depends(get_db)):

@@ -24,12 +24,12 @@ async def get_category(category_id: int, db: Session = Depends(get_db)):
 @router.post("/", response_model=CategoryResponse)
 async def create_category(category: CategoryCreate, db: Session = Depends(get_db)):
     service = CategoryService(db)
-    return service.create(category.model_dump())
+    return service.create(category)
 
 @router.put("/{category_id}", response_model=CategoryResponse)
 async def put_category(category_id: int, new_category_data: CategoryUpdate, db: Session = Depends(get_db)):
     service = CategoryService(db)
-    return service.update(category_id, new_category_data.model_dump())
+    return service.update(category_id, new_category_data)
 
 @router.delete("/{category_id}", response_model=CategoryResponse)
 async def delete_category(category_id: int, db: Session = Depends(get_db)):

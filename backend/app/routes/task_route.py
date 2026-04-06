@@ -24,12 +24,12 @@ async def get_task(task_id: int, db: Session = Depends(get_db)):
 @router.post("/", response_model=TaskResponse)
 async def create_task(task: TaskCreate, db: Session = Depends(get_db)):
     service = TaskService(db)
-    return service.create(task.model_dump())
+    return service.create(task)
 
 @router.put("/{task_id}", response_model=TaskResponse)
 async def put_task(task_id: int, new_task_data: TaskUpdate, db: Session = Depends(get_db)):
     service = TaskService(db)
-    return service.update(task_id, new_task_data.model_dump())
+    return service.update(task_id, new_task_data)
 
 @router.delete("/{task_id}", response_model=TaskResponse)
 async def delete_task(task_id: int, db: Session = Depends(get_db)):
